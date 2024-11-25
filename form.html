@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SBI Connect Payment Gateway</title>
+    <link href="form.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <form id="sbi-connect-form">
+        <h2>SBI Connect Payment Gateway</h2>
+        
+        <!-- Category Section -->
+        <label for="category">Category <span class="mandatory">*</span></label>
+        <select id="category" name="category" required onchange="handleCategoryChange()">
+            <option value="">-- Select Category --</option>
+            <option value="education">Education</option>
+            <option value="shopping">Shopping</option>
+            <option value="services">Services</option>
+        </select>
+    
+        <label for="product-name">Type of Product <span class="mandatory">*</span></label>
+        <select id="product-name" name="product-name" required>
+            <option value="">-- Select Product --</option>
+        </select>
+    
+        <h3>Personal Details</h3>
+        <label for="user-name">Name of the User <span class="mandatory">*</span></label>
+        <input type="text" id="user-name" name="user-name" required pattern="[A-Za-z\s]+" title="Only alphabets are allowed">
+    
+        <label for="contact-number">Contact Number <span class="mandatory">*</span></label>
+        <input type="text" id="contact-number" name="contact-number" required pattern="\d{10}" title="Enter a valid 10-digit contact number">
+    
+        <label for="mail-id">Mail ID <span class="mandatory">*</span></label>
+        <input type="email" id="mail-id" name="mail-id" required>
+    
+        <label for="institution-name">Institution Name <span class="mandatory">*</span></label>
+        <input type="text" id="institution-name" name="institution-name" required pattern="[A-Za-z\s]+" title="Only alphabets are allowed">
+    
+        <label for="course-name">Name of the Course <span class="mandatory">*</span></label>
+        <input type="text" id="course-name" name="course-name" required pattern="[A-Za-z0-9\s]+" title="Only alphanumeric characters are allowed">
+    
+
+    <!-- Product List -->
+    <h2>Product Items</h2>
+    <div class="item-row">
+        <label for="item1">1. Handicraft Bag</label>
+        <img src="assets/images/product1.png" alt="Handicraft Bag" class="product-image">
+        <input type="number" class="quantity-input" min="0" value="0" onchange="updateTotalCost(this, 180, 'total1')">
+        <input type="text" class="cost-input readonly-input" value="180" readonly>
+        <input type="text" id="total1" class="total-cost readonly-input" value="0" readonly placeholder="Total Cost">
+    </div>
+    <div class="item-row">
+        <label for="item2">2. T-shirt (Large Size-43cm)</label>
+        <img src="assets/images/product2.png" alt="T-shirt (Large Size)" class="product-image">
+        <input type="number" class="quantity-input" min="0" value="0" onchange="updateTotalCost(this, 520, 'total2')">
+        <input type="text" class="cost-input readonly-input" value="520" readonly>
+        <input type="text" id="total2" class="total-cost readonly-input" value="0" readonly placeholder="Total Cost">
+    </div>
+    <div class="item-row">
+        <label for="item3">3. T-shirt (XL Size-44cm)</label>
+        <img src="assets/images/product3.png" alt="T-shirt (XL Size)" class="product-image">
+        <input type="number" class="quantity-input" min="0" value="0" onchange="updateTotalCost(this, 520, 'total3')">
+        <input type="text" class="cost-input readonly-input" value="520" readonly>
+        <input type="text" id="total3" class="total-cost readonly-input" value="0" readonly placeholder="Total Cost">
+    </div>
+    <div class="item-row">
+        <label for="item4">4. T-shirt (XXL Size-46cm)</label>
+        <img src="assets/images/product4.png" alt="T-shirt (XXL Size)" class="product-image">
+        <input type="number" class="quantity-input" min="0" value="0" onchange="updateTotalCost(this, 520, 'total4')">
+        <input type="text" class="cost-input readonly-input" value="520" readonly>
+        <input type="text" id="total4" class="total-cost readonly-input" value="0" readonly placeholder="Total Cost">
+    </div>
+    <div class="item-row">
+        <label for="item5">5. Parker Pen</label>
+        <img src="assets/images/product5.png" alt="Parker Pen" class="product-image">
+        <input type="number" class="quantity-input" min="0" value="0" onchange="updateTotalCost(this, 800, 'total5')">
+        <input type="text" class="cost-input readonly-input" value="800" readonly>
+        <input type="text" id="total5" class="total-cost readonly-input" value="0" readonly placeholder="Total Cost">
+    </div>
+    <div class="item-row">
+        <label for="item6">6. Woody Flair</label>
+        <img src="assets/images/product6.png" alt="Woody Flair" class="product-image">
+        <input type="number" class="quantity-input" min="0" value="0" onchange="updateTotalCost(this, 15, 'total6')">
+        <input type="text" class="cost-input readonly-input" value="15" readonly>
+        <input type="text" id="total6" class="total-cost readonly-input" value="0" readonly placeholder="Total Cost">
+    </div>
+    <div class="item-row">
+        <label for="item7">7. Logo Magnet</label>
+        <img src="assets/images/product7.png" alt="Logo Magnet" class="product-image">
+        <input type="number" class="quantity-input" min="0" value="0" onchange="updateTotalCost(this, 75, 'total7')">
+        <input type="text" class="cost-input readonly-input" value="75" readonly>
+        <input type="text" id="total7" class="total-cost readonly-input" value="0" readonly placeholder="Total Cost">
+    </div>
+    <div class="item-row">
+        <label for="item8">8. Jute Bag</label>
+        <img src="assets/images/product8.png" alt="Jute Bag" class="product-image">
+        <input type="number" class="quantity-input" min="0" value="0" onchange="updateTotalCost(this, 160, 'total8')">
+        <input type="text" class="cost-input readonly-input" value="160" readonly>
+        <input type="text" id="total8" class="total-cost readonly-input" value="0" readonly placeholder="Total Cost">
+    </div>
+    <div class="item-row">
+        <label for="item9">9. Ceramic Mug</label>
+        <img src="assets/images/product9.png" alt="Ceramic Mug" class="product-image">
+        <input type="number" class="quantity-input" min="0" value="0" onchange="updateTotalCost(this, 130, 'total9')">
+        <input type="text" class="cost-input readonly-input" value="130" readonly>
+        <input type="text" id="total9" class="total-cost readonly-input" value="0" readonly placeholder="Total Cost">
+    </div>
+    <div class="item-row">
+        <label for="item10">10. 3D Crystal</label>
+        <img src="assets/images/product10.png" alt="3D Crystal" class="product-image">
+        <input type="number" class="quantity-input" min="0" value="0" onchange="updateTotalCost(this, 850, 'total10')">
+        <input type="text" class="cost-input readonly-input" value="850" readonly>
+        <input type="text" id="total10" class="total-cost readonly-input" value="0" readonly placeholder="Total Cost">
+    </div>
+    <div class="item-row">
+        <label for="item11">11. Alarm Clock</label>
+        <img src="assets/images/product11.png" alt="Alarm Clock" class="product-image">
+        <input type="number" class="quantity-input" min="0" value="0" onchange="updateTotalCost(this, 500, 'total11')">
+        <input type="text" class="cost-input readonly-input" value="500" readonly>
+        <input type="text" id="total11" class="total-cost readonly-input" value="0" readonly placeholder="Total Cost">
+    </div>
+    <div class="item-row">
+        <label for="item12">12. Table Clock</label>
+        <img src="assets/images/product12.png" alt="Table Clock" class="product-image">
+        <input type="number" class="quantity-input" min="0" value="0" onchange="updateTotalCost(this, 430, 'total12')">
+        <input type="text" class="cost-input readonly-input" value="430" readonly>
+        <input type="text" id="total12" class="total-cost readonly-input" value="0" readonly placeholder="Total Cost">
+    </div>
+    <div class="item-row">
+        <label for="item13">13. Shawl</label>
+        <img src="assets/images/product13.png" alt="Shawl" class="product-image">
+        <input type="number" class="quantity-input" min="0" value="0" onchange="updateTotalCost(this, 150, 'total13')">
+        <input type="text" class="cost-input readonly-input" value="150" readonly>
+        <input type="text" id="total13" class="total-cost readonly-input" value="0" readonly placeholder="Total Cost">
+    </div>
+    <div class="item-row">
+        <label for="item14">14. Small Round Memento</label>
+        <img src="assets/images/product14.png" alt="Small Round Memento" class="product-image">
+        <input type="number" class="quantity-input" min="0" value="0" onchange="updateTotalCost(this, 600, 'total14')">
+        <input type="text" class="cost-input readonly-input" value="600" readonly>
+        <input type="text" id="total14" class="total-cost readonly-input" value="0" readonly placeholder="Total Cost">
+    </div>
+    <div class="item-row">
+        <label for="item15">15. Wooden Box</label>
+        <img src="assets/images/product15.png" alt="Wooden Box" class="product-image">
+        <input type="number" class="quantity-input" min="0" value="0" onchange="updateTotalCost(this, 200, 'total15')">
+        <input type="text" class="cost-input readonly-input" value="200" readonly>
+        <input type="text" id="total15" class="total-cost readonly-input" value="0" readonly placeholder="Total Cost">
+    </div>
+
+    <!-- Grand Total Section -->
+    <div id="total-section">
+        Total Amount: <input type="text" id="grand-total" class="readonly-input" value="0" readonly>
+    </div>
+
+    <!-- Payment Mode -->
+    <h3>Mode of Payment</h3>
+    <div>
+        <button type="button" id="payNowBtn">Pay Now</button>
+
+        <script>
+            document.getElementById('payNowBtn').onclick = function() {
+                // Ensure user has selected a payment method
+                const selectedPaymentMode = document.querySelector('input[name="payment-mode"]:checked');
+                if (!selectedPaymentMode) {
+                    return; // Don't show an alert, just return if no payment mode is selected
+                }
+        
+                // Get the selected payment mode
+                const paymentMode = selectedPaymentMode.value;
+                
+                // Call the payment gateway with the selected mode
+                initiatePayment(paymentMode);
+            };
+        
+            function initiatePayment(paymentMode) {
+                // Simulate payment redirection
+                console.log('Initiating payment via:', paymentMode);
+        
+                // Redirect to the payment gateway for actual payment processing
+                // Here, you can pass the payment mode or other required parameters to the payment URL
+                const paymentUrl = 'https://www.sbiepay.sbi/secure/home';
+                
+                // Optionally, add payment details to the URL if needed
+                const paymentUrlWithParams = `${paymentUrl}?mode=${paymentMode}`;
+                
+                // Redirect to the payment gateway
+                window.location.href = paymentUrlWithParams;
+            }
+        </script>
+        
+    </div>
+
+    <!-- Buttons -->
+    <div style="display: flex; justify-content: space-between;">
+        <button type="button" class="btn-back" onclick="goBack()">Back</button>
+        <button type="reset" class="btn-reset">Reset</button>
+        <button type="submit" class="btn-submit">Submit</button>
+    </div>
+</form>
+
+<script>
+    // Function to update the total cost of each product
+    function updateTotalCost(inputElement, price, totalId) {
+        const quantity = parseInt(inputElement.value) || 0; // Get the quantity or default to 0
+        const totalCost = quantity * price; // Calculate the total cost
+        document.getElementById(totalId).value = totalCost; // Update the total cost field
+        updateGrandTotal(); // Update the grand total
+    }
+
+    // Function to update the grand total
+    function updateGrandTotal() {
+        const totalCostFields = document.querySelectorAll('.total-cost');
+        let grandTotal = 0;
+
+        totalCostFields.forEach((field) => {
+            grandTotal += parseInt(field.value) || 0; // Add up all total costs
+        });
+
+        document.getElementById('grand-total').value = grandTotal; // Update the grand total field
+    }
+     // Function for the Back button
+     function goBack() {
+        window.history.back();
+    }
+</script>
+</body>
+</html>

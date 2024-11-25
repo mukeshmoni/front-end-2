@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SBI Connect Payment Gateway</title>
+    <!-- Google Fonts Link -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 20px;
+        }
+        form {
+            max-width: 800px;
+            margin: auto;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2, h3 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+        input, select, button, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 30%;
+            padding: 10px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        .btn-submit {
+            background-color: #28a745;
+            color: white;
+            border: none;
+        }
+        .btn-reset {
+            background-color: #ffc107;
+            color: black;
+            border: none;
+        }
+        .btn-back {
+            background-color: #007bff;
+            color: white;
+            border: none;
+        }
+        .btn-paynow {
+            background-color: #28a745;
+            color: white;
+            border: none;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
+        .readonly-input {
+            background-color: #f8f9fa;
+            pointer-events: none;
+        }
+        .mandatory {
+            color: red;
+        }
+        .item-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .item-row label {
+            width: 20%;
+        }
+        .item-row input {
+            width: 30%;
+            margin: 0 10px;
+        }
+        #total-section {
+            text-align: right;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .paynow-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        function updateTotal() {
+            let total = 0;
+            const rows = document.querySelectorAll('.item-row');
+            rows.forEach(row => {
+                const quantity = row.querySelector('.quantity-input');
+                const cost = row.querySelector('.cost-input');
+
+                total += parseInt(quantity.value || 0) * parseInt(cost.value || 0);
+            });
+            document.getElementById('total-amount').value = total;
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+
+        function handleCategoryChange() {
+            const category = document.getElementById("category").value;
+            const productName = document.getElementById("product-name");
+
+            // Reset products list
+            productName.innerHTML = '<option value="">-- Select Product --</option>';
+
+            if (category === "education") {
+                productName.innerHTML += '<option value="book">Books</option>';
+                productName.innerHTML += '<option value="course-material">Course Material</option>';
+            } else if (category === "shopping") {
+                productName.innerHTML += '<option value="clothing">Clothing</option>';
+                productName.innerHTML += '<option value="electronics">Electronics</option>';
+            } else if (category === "services") {
+                productName.innerHTML += '<option value="consulting">Consulting</option>';
+                productName.innerHTML += '<option value="software">Software</option>';
+            }
+        }
+
+        // Function for Pay Now button
+        function payNow() {
+            window.location.href = "https://www.sbiepay.sbi/secure/home";
+        }
+    </script>
+</head>
+<body>
+
+<form id="sbi-connect-form">
+    <h2>SBI Connect Payment Gateway</h2>
+    
+    <!-- Category Section -->
+    <label for="category">Category <span class="mandatory">*</span></label>
+    <select id="category" name="category" required onchange="handleCategoryChange()">
+        <option value="">-- Select Category --</option>
+        <option value="education">Education</option>
+        <option value="shopping">Shopping</option>
+        <option value="services">Services</option>
+    </select>
+
+    <label for="product-name">Type of Product <span class="mandatory">*</span></label>
+    <select id="product-name" name="product-name" required>
+        <option value="">-- Select Product --</option>
+    </select>
+
+    <h3>Personal Details</h3>
+    <label for="user-name">Name of the User <span class="mandatory">*</span></label>
+    <input type="text" id="user-name" name="user-name" required pattern="[A-Za-z\s]+" title="Only alphabets are allowed">
+
+    <label for="contact-number">Contact Number <span class="mandatory">*</span></label>
+    <input type="text" id="contact-number" name="contact-number" required pattern="\d{10}" title="Enter a valid 10-digit contact number">
+
+    <label for="mail-id">Mail ID <span class="mandatory">*</span></label>
+    <input type="email" id="mail-id" name="mail-id" required>
+
+    <label for="institution-name">Institution Name <span class="mandatory">*</span></label>
+    <input type="text" id="institution-name" name="institution-name" required pattern="[A-Za-z\s]+" title="Only alphabets are allowed">
+
+    <label for="course-name">Name of the Course <span class="mandatory">*</span></label>
+    <input type="text" id="course-name" name="course-name" required pattern="[A-Za-z0-9\s]+" title="Only alphanumeric characters are allowed">
+
+    <div class="item-row">
+        <label for="item1">Product 1</label>
+        <input type="number" class="quantity-input" min="0" value="0" onchange="updateTotal()">
+        <input type="text" class="cost-input readonly-input" value="100" readonly>
+    </div>
+    <div class="item-row">
+        <label for="item2">Product 2</label>
+        <input type="number" class="quantity-input" min="0" value="0" onchange="updateTotal()">
+        <input type="text" class="cost-input readonly-input" value="200" readonly>
+    </div>
+    <div class="item-row">
+        <label for="item3">Product 3</label>
+        <input type="number" class="quantity-input" min="0" value="0" onchange="updateTotal()">
+        <input type="text" class="cost-input readonly-input" value="300" readonly>
+    </div> 
+
+    <div class="item-row">
+        <label for="item4">Product 4</label>
+        <input type="number" class="quantity-input" min="0" value="0" onchange="updateTotal()">
+        <input type="text" class="cost-input readonly-input" value="100" readonly>
+    </div>
+    <div class="item-row">
+        <label for="item5">Product 5</label>
+        <input type="number" class="quantity-input" min="0" value="0" onchange="updateTotal()">
+        <input type="text" class="cost-input readonly-input" value="200" readonly>
+    </div>
+    <div class="item-row">
+        <label for="item6">Product 6</label>
+        <input type="number" class="quantity-input" min="0" value="0" onchange="updateTotal()">
+        <input type="text" class="cost-input readonly-input" value="300" readonly>
+    </div> 
+
+<div class="item-row">
+        <label for="item7">Product 7</label>
+        <input type="number" class="quantity-input" min="0" value="0" onchange="updateTotal()">
+        <input type="text" class="cost-input readonly-input" value="100" readonly>
+    </div>
+    <div class="item-row">
+        <label for="item8">Product 8</label>
+        <input type="number" class="quantity-input" min="0" value="0" onchange="updateTotal()">
+        <input type="text" class="cost-input readonly-input" value="200" readonly>
+    </div>
+    <div class="item-row">
+        <label for="item9">Product 9</label>
+        <input type="number" class="quantity-input" min="0" value="0" onchange="updateTotal()">
+        <input type="text" class="cost-input readonly-input" value="300" readonly>
+    </div> 
+    <div class="item-row">
+        <label for="item10">Product 10</label>
+        <input type="number" class="quantity-input" min="0" value="0" onchange="updateTotal()">
+        <input type="text" class="cost-input readonly-input" value="100" readonly>
+    </div>
+    <div class="item-row">
+        <label for="item11">Product 11</label>
+        <input type="number" class="quantity-input" min="0" value="0" onchange="updateTotal()">
+        <input type="text" class="cost-input readonly-input" value="200" readonly>
+    </div>
+    <div class="item-row">
+        <label for="item12">Product 12</label>
+        <input type="number" class="quantity-input" min="0" value="0" onchange="updateTotal()">
+        <input type="text" class="cost-input readonly-input" value="300" readonly>
+        </div>
+        <div class="item-row">
+            <label for="item13">Product 13</label>
+            <input type="number" class="quantity-input" min="0" value="0" onchange="updateTotal()">
+            <input type="text" class="cost-input readonly-input" value="300" readonly>
+            </div>
+    <div class="item-row">
+        <label for="item14">Product 14</label>
+        <input type="number" class="quantity-input" min="0" value="0" onchange="updateTotal()">
+        <input type="text" class="cost-input readonly-input" value="200" readonly>
+    </div>
+    <div class="item-row">
+        <label for="item15">Product 15</label>
+        <input type="number" class="quantity-input" min="0" value="0" onchange="updateTotal()">
+        <input type="text" class="cost-input readonly-input" value="300" readonly>
+    </div> 
+
+
+
+
+    <!-- Payment Details Section -->
+    <h3>Payment Details</h3>
+    <!-- Item rows here as before... -->
+    <div id="total-section">
+        Total Amount: <input type="text" id="total-amount" name="total-amount" class="readonly-input" value="0" readonly>
+    </div>
+
+    <!-- Mode of Payment -->
+    <h3>Mode of Payment</h3>
+    <div>
+        <label><input type="radio" name="payment-mode" value="gpay" required> GPAY</label>
+        <label><input type="radio" name="payment-mode" value="paytm"> PAYTM</label>
+        <label><input type="radio" name="payment-mode" value="sbi-connect"> SBI Connect</label>
+        <label><input type="radio" name="payment-mode" value="others"> OTHERS</label>
+    </div>
+
+    <!-- Pay Now button container -->
+    <div class="paynow-container">
+        <button type="button" class="btn-paynow" onclick="payNow()">Pay Now</button>
+    </div>
+
+    <label for="transaction-number">Transaction Number <span class="mandatory">*</span></label>
+    <input type="text" id="transaction-number" name="transaction-number" required pattern="[A-Za-z0-9]+" title="Alphanumeric only">
+
+    <label for="remarks">Remarks</label>
+    <textarea id="remarks" name="remarks" rows="4" placeholder="Enter your remarks here"></textarea>
+
+    <p>Acknowledgement: Thanks for the payment through SBI Collect.</p>
+
+    <div style="display: flex; justify-content: space-between;">
+        <button type="button" class="btn-back" onclick="goBack()">Back</button>
+        <button type="reset" class="btn-reset">Reset</button>
+        <button type="submit" class="btn-submit">Submit</button>
+    </div>
+</form>
+
+</body>
+</html>

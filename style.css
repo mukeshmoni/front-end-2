@@ -1,0 +1,186 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f8f9fa; /* Light background */
+  color: #343a40; /* Dark text for contrast */
+}
+
+h1 {
+  color: #007bff; /* Bootstrap primary color */
+  font-weight: 600;
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* Grid Container Styling */
+.container {
+  max-width: 1200px; /* Larger container width */
+  margin: 0 auto; /* Center the container */
+  padding: 20px;
+}
+
+.card {
+  background: #ffffff;
+  border: 2px solid #007bff; /* Blue border around the card */
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 0 4px 20px rgba(0, 123, 255, 0.2); /* Soft blue shadow */
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+} 
+
+.card:hover {
+  transform: translateY(-10px); /* Slight lift effect */
+  box-shadow: 0 10px 30px rgba(0, 123, 255, 0.3); /* Darker shadow */
+  border-color: #0056b3; /* Darker blue border on hover */
+}
+
+.card img {
+  width: 100%;
+  object-fit: contain; /* Ensure image is contained within the space */
+  max-height: 250px; /* Limit max height of the image */
+  border-radius: 10px; /* Add slight rounding to the image border */
+  margin-bottom: 10px; /* Space between image and text */
+}
+
+.card-body {
+  padding: 2rem; /* Add more space inside the card */
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  color: #007bff; /* Blue color for the title */
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center; /* Centers the title */
+}
+
+.card-text {
+  font-size: 0.9rem;
+  color: #6c757d;
+  margin-bottom: 10px;
+}
+
+.card-price {
+  font-size: 1rem;
+  color: #28a745; /* Green color for price */
+  font-weight: bold;
+  margin-bottom: 40px;
+  text-align: center; /* Centers the price text */
+}
+
+/* Button Styling
+.buy-now {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px; /* Rounded button */
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.buy-now:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+} */
+
+/* Custom Filter and Sort Style */
+.filter-sort {
+  background-color: #ffffff;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.filter-sort label {
+  font-size: 16px;
+  color: #343a40;
+}
+
+/* Bootstrap Grid Adjustments */
+.row-cols-1 {
+  margin-top: 30px;
+}
+
+.row-cols-1 .col-md-3 {
+  padding: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .card {
+    max-width: 100%;
+  }
+
+  /* .buy-now {
+    bottom: 10px;
+  } */
+
+  /* Adjust card widths for mobile */
+  .col-1 {
+    flex: 1 1 calc(100% - 20px); /* 1 column on small screens */
+    margin-bottom: 20px;
+  }
+
+  .col-md-3 {
+    flex: 1 1 calc(50% - 10px); /* 2 columns on medium screens */
+  }
+}
+
+@media (min-width: 768px) {
+  /* Ensures 4 columns on medium to larger screens */
+  .col-md-3 {
+    flex: 1 1 calc(25% - 16px);
+  }
+}
+
+/* Cart Container */
+#cartContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.cart-item {
+  flex: 1 1 calc(25% - 16px); /* Adjusts for responsiveness */
+  max-width: 25%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.cart-card img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.cart-card-body h5 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.cart-card-body p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #555;
+}
