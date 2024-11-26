@@ -12,30 +12,33 @@ function updateTotal() {
 function goBack() {
     window.history.back();
 }
+//  // Define the handleCategoryChange function
+//  function handleCategoryChange() {
+//     const category = document.getElementById("category").value;
+//     const productSelect = document.getElementById("product-name");
 
-function handleCategoryChange() {
-    const category = document.getElementById("category").value;
-    const productName = document.getElementById("product-name");
+//     // Clear existing options
+//     productSelect.innerHTML = '<option value="">-- Select Product --</option>';
 
-    // Reset products list
-    productName.innerHTML = '<option value="">-- Select Product --</option>';
+//     // Populate products based on selected category
+//     if (category === "education") {
+//         productSelect.innerHTML += '<option value="books">Books</option>';
+//         productSelect.innerHTML += '<option value="courses">Online Courses</option>';
+//     } else if (category === "shopping") {
+//         productSelect.innerHTML += '<option value="clothing">Clothing</option>';
+//         productSelect.innerHTML += '<option value="electronics">Electronics</option>';
+//     } else if (category === "services") {
+//         productSelect.innerHTML += '<option value="consulting">Consulting</option>';
+//         productSelect.innerHTML += '<option value="repair">Repair Services</option>';
+//     }
+// }
 
-    if (category === "education") {
-        productName.innerHTML += '<option value="book">Books</option>';
-        productName.innerHTML += '<option value="course-material">Course Material</option>';
-    } else if (category === "shopping") {
-        productName.innerHTML += '<option value="clothing">Clothing</option>';
-        productName.innerHTML += '<option value="electronics">Electronics</option>';
-    } else if (category === "services") {
-        productName.innerHTML += '<option value="consulting">Consulting</option>';
-        productName.innerHTML += '<option value="software">Software</option>';
-    }
+ // Function for Pay Now button
+ function payNow() {
+     window.location.href = "https://www.sbiepay.sbi/secure/home";
 }
 
-// // Function for Pay Now button
-// function payNow() {
-//     window.location.href = "https://www.sbiepay.sbi/secure/home";
-//}
+
 // Function to update the total price and log product details where quantity is greater than 0
 function updateTotal() {
     const productRows = document.querySelectorAll('.item-row');

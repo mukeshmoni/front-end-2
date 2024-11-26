@@ -18,6 +18,35 @@
             <option value="shopping">Shopping</option>
             <option value="services">Services</option>
         </select>
+
+
+        <script>
+
+// Define the handleCategoryChange function
+function handleCategoryChange() {
+    const category = document.getElementById("category").value;
+    const productSelect = document.getElementById("product-name");
+
+    // Clear existing options
+    productSelect.innerHTML = '<option value="">-- Select Product --</option>';
+
+    // Populate products based on selected category
+    if (category === "education") {
+        productSelect.innerHTML += '<option value="books">Books</option>';
+        productSelect.innerHTML += '<option value="courses">Online Courses</option>';
+    } else if (category === "shopping") {
+        productSelect.innerHTML += '<option value="clothing">Clothing</option>';
+        productSelect.innerHTML += '<option value="electronics">Electronics</option>';
+    } else if (category === "services") {
+        productSelect.innerHTML += '<option value="consulting">Consulting</option>';
+        productSelect.innerHTML += '<option value="repair">Repair Services</option>';
+    }
+}
+
+
+
+
+        </script>
     
         <label for="product-name">Type of Product <span class="mandatory">*</span></label>
         <select id="product-name" name="product-name" required>
@@ -159,36 +188,7 @@
     <div>
         <button type="button" id="payNowBtn">Pay Now</button>
 
-        <script>
-            document.getElementById('payNowBtn').onclick = function() {
-                // Ensure user has selected a payment method
-                const selectedPaymentMode = document.querySelector('input[name="payment-mode"]:checked');
-                if (!selectedPaymentMode) {
-                    return; // Don't show an alert, just return if no payment mode is selected
-                }
         
-                // Get the selected payment mode
-                const paymentMode = selectedPaymentMode.value;
-                
-                // Call the payment gateway with the selected mode
-                initiatePayment(paymentMode);
-            };
-        
-            function initiatePayment(paymentMode) {
-                // Simulate payment redirection
-                console.log('Initiating payment via:', paymentMode);
-        
-                // Redirect to the payment gateway for actual payment processing
-                // Here, you can pass the payment mode or other required parameters to the payment URL
-                const paymentUrl = 'https://www.sbiepay.sbi/secure/home';
-                
-                // Optionally, add payment details to the URL if needed
-                const paymentUrlWithParams = `${paymentUrl}?mode=${paymentMode}`;
-                
-                // Redirect to the payment gateway
-                window.location.href = paymentUrlWithParams;
-            }
-        </script>
         
     </div>
 
