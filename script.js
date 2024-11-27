@@ -19,10 +19,10 @@ const products = [
 
 { id: 12, name: 'TABLE CLOCK', description: '', price: 430, image: 'assets/images/product3.png', isNew: true },
 { id: 13, name: 'SHAWL', description: '', price: 150, image: 'assets/images/product7.png', isNew: false },
-{ id: 15, name: 'SMALL  MOMENTO', description: '', price: 600, image: 'assets/images/product32.png', isNew: true },
+// { id: 15, name: 'SMALL  MOMENTO', description: '', price: 600, image: 'assets/images/product32.png', isNew: true },
 { id: 16, name: 'QUALITY PEN MOU', description: '', price: 600, image: 'assets/images/product38.png', isNew: false },
 { id: 14, name: 'SMALL ROUND MOMENTO', description: '', price: 600, image: 'assets/images/product31.png', isNew: true },
-{ id: 11, name: 'DIGITAL ALARM CLOCK', description: '', price: 500, image: 'assets/images/product15.png', isNew: false },
+{ id: 11, name: 'ALARM CLOCK', description: '', price: 500, image: 'assets/images/product15.png', isNew: false },
 { id: 9, name: 'CERAMIC MUG', description: '', price: 130, image: 'assets/images/product17.png', isNew: true },
 { id: 5, name: 'PARKER PEN', description: '', price: 800, image: 'assets/images/product34.png', isNew: false },
 
